@@ -15,29 +15,35 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
+        headerShown: false, // Disables the default header
+        tabBarButton: HapticTab, // Custom button for haptic feedback
         tabBarBackground: TabBarBackground,
+        tabBarPosition: 'top', // Moves the tab bar to the top
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
+            position: 'absolute', // Ensures transparency on iOS to show blur effect, no arrow
+            backgroundColor: 'transparent', // No background color that could create a dropdown arrow
           },
-          default: {},
+          default: {
+            backgroundColor: 'transparent', // Ensures no background that could introduce an arrow
+          },
         }),
       }}>
+      {/* Tab for Brødrene Eirvik */}
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Brødrene Ervik',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="wrench" color={color} />,
         }}
       />
+      
+      {/* Tab for Tjenester */}
       <Tabs.Screen
-        name="explore"
+        name="Kontakt"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Kontakt',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="wrench" color={color} />,
         }}
       />
     </Tabs>
